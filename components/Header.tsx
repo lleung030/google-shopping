@@ -11,11 +11,11 @@ import {
 } from "@tremor/react";
 
 const SORT_BY_MAP = {
-    r: 'Default',
-    rv: "By Review",
-    p: 'By Price (low to high)',
-    pd: 'By Price (high to low)',
-}
+  r: "Default",
+  rv: "By Review",
+  p: "By Price (low to high)",
+  pd: "By Price (high to low)",
+};
 
 function Header() {
   return (
@@ -45,7 +45,7 @@ function Header() {
             <SearchButton />
           </div>
           <div>
-            <SearchSelect className="min-w-4" placeholder='# of pages'>
+            <SearchSelect className="min-w-4" placeholder="# of pages">
               {[...Array(100)].map((_, i) => (
                 <SearchSelectItem key={i} value={(i + 1).toString()}>
                   {(i + 1).toString()} pages
@@ -53,14 +53,21 @@ function Header() {
               ))}
             </SearchSelect>
 
-                <Select>
-                    {Object.entries(SORT_BY_MAP).map(([key, value]) => (
-                        <SelectItem key={key} value={key}>
-                            {value}
-                        </SelectItem>
-                    ))}
-                </Select>
+            <Select className="min-w-4" placeholder="Sort">
+              {Object.entries(SORT_BY_MAP).map(([key, value]) => (
+                <SelectItem key={key} value={key}>
+                  {value}
+                </SelectItem>
+              ))}
+            </Select>
 
+            <SearchSelect className="min-w-4" placeholder='Min Price...'>
+                {['', '100', '250', '500', '750', '900', '1000+'].map((_,i) => (
+                    <SearchSelectItem key={i} value={_.toString()}>
+                        {i === 0 ? 'No Minimum' : `$${_.toString()}`}
+                    </SearchSelectItem>
+                ))}
+            </SearchSelect>
           </div>
         </form>
       </div>
