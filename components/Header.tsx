@@ -22,7 +22,7 @@ const SORT_BY_MAP = {
 
 function Header() {
     const [pages, setPages] = useState('');
-    const [sortBy, setSortBy] = useState('');
+    const [sortBy, setSortBy] = useState('r');
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
     const router = useRouter();
