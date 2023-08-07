@@ -9,6 +9,7 @@ import {
   Select,
   SelectItem,
 } from "@tremor/react";
+import Avatar from 'react-avatar';
 
 const SORT_BY_MAP = {
   r: "Default",
@@ -68,8 +69,22 @@ function Header() {
                     </SearchSelectItem>
                 ))}
             </SearchSelect>
+
+            <SearchSelect
+            className="min-w-4"
+            placeholder='Max Price...'
+            >
+            {['', '100', '250', '500', '750', '900', '1000+'].map((_,i) => (
+                    <SearchSelectItem key={i} value={_.toString()}>
+                        {i === 0 ? 'No Maximum' : `$${_.toString()}`}
+                    </SearchSelectItem>
+                ))}
+            </SearchSelect>
           </div>
         </form>
+      </div>
+      <div>
+                <Avatar name='Lucas Leung' round size='50'/>
       </div>
     </header>
   );
