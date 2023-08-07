@@ -10,6 +10,13 @@ import {
   SelectItem,
 } from "@tremor/react";
 
+const SORT_BY_MAP = {
+    r: 'Default',
+    rv: "By Review",
+    p: 'By Price (low to high)',
+    pd: 'By Price (high to low)',
+}
+
 function Header() {
   return (
     <header>
@@ -38,13 +45,22 @@ function Header() {
             <SearchButton />
           </div>
           <div>
-            <SearchSelect>
+            <SearchSelect className="min-w-4" placeholder='# of pages'>
               {[...Array(100)].map((_, i) => (
                 <SearchSelectItem key={i} value={(i + 1).toString()}>
                   {(i + 1).toString()} pages
                 </SearchSelectItem>
               ))}
             </SearchSelect>
+
+                <Select>
+                    {Object.entries(SORT_BY_MAP).map(([key, value]) => (
+                        <SelectItem key={key} value={key}>
+                            {value}
+                        </SelectItem>
+                    ))}
+                </Select>
+
           </div>
         </form>
       </div>
