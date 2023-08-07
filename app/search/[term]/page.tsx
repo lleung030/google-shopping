@@ -1,20 +1,17 @@
 import { redirect } from "next/navigation";
+import { SearchParams } from "@/typings";
 
 type Props = {
-  searchParams: any;
+  searchParams: SearchParams;
   params: {
     term: string;
-  }
-}
-function SearchPage({searchParams, params: {term}}: Props) {
+  };
+};
+function SearchPage({ searchParams, params: { term } }: Props) {
   if (!term) {
-    redirect('/')
+    redirect("/");
   }
-  return (
-    <div>
-      Welcome to results of search page
-    </div>
-  )
+  return <div>Welcome to results of search page</div>;
 }
 
-export default SearchPage
+export default SearchPage;
