@@ -10,6 +10,7 @@ import {
   SelectItem,
 } from "@tremor/react";
 import Avatar from "react-avatar";
+import { useState } from 'react';
 
 const SORT_BY_MAP = {
   r: "Default",
@@ -19,6 +20,7 @@ const SORT_BY_MAP = {
 };
 
 function Header() {
+    const [pages, setPages] = useState('');
   return (
     <header className="flex flex-col items-center md:flex-row md:items-start md:space-x-6 px-2 pb-5 pt-10 md:p-10 md:pb-5">
       <Link href="/ ">
@@ -46,7 +48,9 @@ function Header() {
             <SearchButton />
           </div>
           <div className="grid grid-cols-2 gap-2 p-4 md:grid-cols-4 max-w-lg md:max-w-none mx-auto items-center">
-            <SearchSelect className="min-w-4" placeholder="# of pages">
+            <SearchSelect 
+            onValueChange={(value) => setPages(value)}
+            className="min-w-4" placeholder="# of pages">
               {[...Array(100)].map((_, i) => (
                 <SearchSelectItem key={i} value={(i + 1).toString()}>
                   {(i + 1).toString()} pages
