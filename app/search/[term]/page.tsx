@@ -3,6 +3,8 @@ import { PageResult, SearchParams } from "@/typings";
 import { getFetchUrl } from "@/lib/getFetchUrl";
 import ResultsLists from "@/components/ResultsLists";
 
+export const revalidate = 300;
+
 type Props = {
   searchParams: SearchParams;
   params: {
