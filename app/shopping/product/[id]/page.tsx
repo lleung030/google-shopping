@@ -72,7 +72,7 @@ async function ProductPage({ params: { id } }: Props) {
             ))}
           </div>
         </div>
-        <div className="pt-10">
+        <div className="pt-10 flex-1">
                 <div>
                     {productData.content.pricing.online[0].details && (
                         <>
@@ -104,6 +104,21 @@ async function ProductPage({ params: { id } }: Props) {
                             {productData.content.pricing.online[0].details}
                         </p>
                         </>
+                    )}
+
+                    <hr className="my-5"/>
+                    <p>{productData.content.description}</p>
+
+                    {productData.content.highlights && (
+                        <div className="mt-5 space-y-2">
+                            <h3 className="font-bold text-2xl">Product Highlights</h3>
+                            <hr />
+                            <ul className="space-y-2">
+                                {productData.content.highlights?.map((highlight) => (
+                                    <li className="list-disc">{highlight}</li>
+                                ))}
+                            </ul>
+                        </div>
                     )}
                 </div>
         </div>
